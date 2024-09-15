@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3d6br21x6bum"]
+
+[ext_resource type="Script" path="res://ui/JoyStick/Joystic.gd" id="1_oaqtt"]
+[ext_resource type="Texture2D" uid="uid://b655r7pvb0lyx" path="res://img/joystic/Joystic_Outline.svg" id="2_saeh6"]
+[ext_resource type="Texture2D" uid="uid://c0r6m0kqr5bvv" path="res://img/joystic/Joystic_InnerCircle.svg" id="3_tg1g8"]
+[ext_resource type="Script" path="res://ui/JoyStick/inner.gd" id="4_xrim3"]
+
+[node name="JoyStick" type="Node2D"]
+script = ExtResource("1_oaqtt")
+
+[node name="Joystick_out" type="Sprite2D" parent="."]
+texture = ExtResource("2_saeh6")
+
+[node name="Joystick_inner" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_tg1g8")
+script = ExtResource("4_xrim3")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -189.0
+offset_top = -189.0
+offset_right = 189.0
+offset_bottom = 189.0
+focus_mode = 1
+
+[connection signal="button_down" from="Button" to="Joystick_inner" method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="Joystick_inner" method="_on_button_button_up"]
+[connection signal="gui_input" from="Button" to="Joystick_inner" method="_on_button_gui_input"]

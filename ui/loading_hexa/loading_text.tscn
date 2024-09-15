@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvbatrj41wsor"]
+
+[ext_resource type="Script" path="res://label.gd" id="1_n2lit"]
+[ext_resource type="Script" path="res://ui/loading_hexa/cancel.gd" id="2_kob66"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -151.5
+offset_right = 240.0
+offset_bottom = 151.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TEXT..."
+script = ExtResource("1_n2lit")
+text_ = "HexaPod과 연결 중"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = 163.0
+offset_right = 240.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "취소"
+script = ExtResource("2_kob66")

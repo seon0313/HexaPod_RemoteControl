@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://1tu61v4txy7y"]
+
+[ext_resource type="Script" path="res://blockcoding/item_list.gd" id="1_wegol"]
+[ext_resource type="Script" path="res://blockcoding/area_2d.gd" id="2_v5gio"]
+[ext_resource type="PackedScene" uid="uid://c3d6br21x6bum" path="res://ui/JoyStick/joy_stick.tscn" id="3_ols8i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tr4uo"]
+size = Vector2(128, 129.754)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 66.0
+grow_vertical = 2
+focus_mode = 0
+item_count = 5
+item_0/text = "기본"
+item_1/text = "논리"
+item_2/text = "시간"
+item_3/text = "이동"
+item_4/text = "모터"
+script = ExtResource("1_wegol")
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = 198.0
+grow_vertical = 2
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/Control/Panel"]
+top_level = true
+position = Vector2(-1, 1)
+collision_layer = 65535
+collision_mask = 65535
+script = ExtResource("2_v5gio")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Panel/Area2D"]
+top_level = true
+position = Vector2(189, 72)
+scale = Vector2(0.5, 0.447)
+shape = SubResource("RectangleShape2D_tr4uo")
+
+[node name="JoyStick" parent="CanvasLayer/Control" instance=ExtResource("3_ols8i")]
+position = Vector2(644, 357)
+scale = Vector2(0.5, 0.5)

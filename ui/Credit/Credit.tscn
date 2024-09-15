@@ -1,0 +1,139 @@
+[gd_scene load_steps=3 format=3 uid="uid://mnykbivlqd1"]
+
+[ext_resource type="FontFile" uid="uid://cpr2lids46txi" path="res://font/font.ttf" id="1_vq6k0"]
+
+[sub_resource type="GDScript" id="GDScript_bons8"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	self.pressed.connect(self._press)
+
+func _press() -> void:
+	get_tree().change_scene_to_file(\"res://main.tscn\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed('ui_cancel'):
+		self._press()
+"
+
+[node name="Credit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -184.0
+offset_right = 46.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_vq6k0")
+theme_override_font_sizes/font_size = 35
+text = "크레딧"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.5
+offset_top = -120.5
+offset_right = 199.5
+offset_bottom = 120.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.5
+offset_top = -51.0
+offset_right = -1.5
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_vq6k0")
+theme_override_font_sizes/font_size = 15
+text = "클라이언트 개발
+
+HexaPod ROS2 개발
+
+HexaPod 설계"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.5
+offset_top = -51.0
+offset_right = 158.5
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_vq6k0")
+theme_override_font_sizes/font_size = 15
+text = "추윤선
+
+추윤선
+
+김재원, 백수현, 추윤선"
+
+[node name="LinkButton" type="LinkButton" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -31.0
+offset_right = 66.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+tooltip_text = "goto github.com"
+theme_override_colors/font_color = Color(0, 0.431373, 0.823529, 1)
+text = "Go to GitHub"
+uri = "https://github.com/seon0313/HexaPod"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.5
+offset_top = 132.0
+offset_right = 199.5
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_vq6k0")
+text = "닫기"
+script = SubResource("GDScript_bons8")

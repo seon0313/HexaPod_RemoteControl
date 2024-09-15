@@ -1,0 +1,184 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4anjwrx5cvov"]
+
+[ext_resource type="FontFile" uid="uid://cpr2lids46txi" path="res://font/font.ttf" id="1_nbsdh"]
+[ext_resource type="Script" path="res://main.gd" id="1_u3hjj"]
+[ext_resource type="Script" path="res://version.gd" id="4_y3b6i"]
+
+[sub_resource type="GDScript" id="GDScript_kudrg"]
+resource_local_to_scene = true
+script/source = "extends Button
+
+@export var filename = 'res://ui/connect_hexa/connectHexaPod.tscn'
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	self.pressed.connect(self._button_pressed)
+
+func _button_pressed():
+	get_tree().change_scene_to_file(filename)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_7b0hm"]
+resource_name = "credit_button"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	self.pressed.connect(self._press)
+
+func _press():
+	get_tree().change_scene_to_file(\"res://ui/Credit/Credit.tscn\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u3hjj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.0
+offset_top = -107.5
+offset_right = 119.0
+offset_bottom = -48.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_nbsdh")
+theme_override_font_sizes/font_size = 50
+text = "HexaPod"
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Label"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.0
+offset_top = 50.0
+offset_right = 119.0
+offset_bottom = 109.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_nbsdh")
+theme_override_font_sizes/font_size = 25
+text = "T.F Lab"
+horizontal_alignment = 2
+
+[node name="connectButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -5.0
+offset_right = 94.5
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_nbsdh")
+theme_override_font_sizes/font_size = 20
+text = "HexaPod과
+연결하기"
+script = SubResource("GDScript_kudrg")
+
+[node name="blockcodingButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 103.5
+offset_top = -5.0
+offset_right = 292.5
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_nbsdh")
+theme_override_font_sizes/font_size = 20
+text = "블럭코딩 하기"
+script = SubResource("GDScript_kudrg")
+
+[node name="connectDroneButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -292.5
+offset_top = -5.0
+offset_right = -103.5
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_nbsdh")
+theme_override_font_sizes/font_size = 20
+text = "Drone과 연결하기"
+script = SubResource("GDScript_kudrg")
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -32.0
+offset_right = -24.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_nbsdh")
+theme_override_font_sizes/font_size = 15
+text = "ver 0.0.0 alpha"
+horizontal_alignment = 2
+vertical_alignment = 2
+script = ExtResource("4_y3b6i")
+metadata/_edit_group_ = true
+
+[node name="Button" type="Button" parent="CanvasLayer/Label2"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -2.0
+offset_top = 5.0
+offset_right = 116.0
+offset_bottom = 23.0
+
+[node name="creditButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = 153.0
+offset_right = 94.5
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_nbsdh")
+theme_override_font_sizes/font_size = 20
+text = "크레딧"
+script = SubResource("GDScript_7b0hm")
+
+[connection signal="button_down" from="CanvasLayer/Label2/Button" to="CanvasLayer/Label2" method="_on_button_button_down"]

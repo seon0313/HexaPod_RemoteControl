@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl3m000xu7qjk"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ubo6f"]
+[ext_resource type="FontFile" uid="uid://cpr2lids46txi" path="res://font/font.ttf" id="2_0qhau"]
+[ext_resource type="Script" path="res://ui/connect_hexa/connect.gd" id="3_6u513"]
+
+[sub_resource type="GDScript" id="GDScript_fl7bc"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	self.pressed.connect(self._button_pressed)
+
+func _button_pressed() -> void:
+	get_tree().change_scene_to_file('res://main.tscn')
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed('ui_cancel'):
+		self._button_pressed()
+"
+
+[node name="ConnectHexaPod" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ubo6f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.5
+offset_top = 192.0
+offset_right = -5.5
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_0qhau")
+theme_override_font_sizes/font_size = 20
+text = "닫기"
+script = SubResource("GDScript_fl7bc")
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.5
+offset_top = -181.5
+offset_right = 319.5
+offset_bottom = 181.5
+grow_horizontal = 2
+grow_vertical = 2
+item_count = 2
+item_0/text = "qwe"
+item_1/text = "321"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -232.5
+offset_right = 20.0
+offset_bottom = -209.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_0qhau")
+theme_override_font_sizes/font_size = 30
+text = "Hexapod 연결"
+horizontal_alignment = 1
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.5
+offset_top = 192.0
+offset_right = 318.5
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_0qhau")
+theme_override_font_sizes/font_size = 20
+text = "연결"
+script = ExtResource("3_6u513")

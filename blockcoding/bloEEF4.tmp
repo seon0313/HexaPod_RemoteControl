@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://1tu61v4txy7y"]
+
+[ext_resource type="Script" path="res://blockcoding/item_list.gd" id="1_wegol"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 66.0
+grow_vertical = 2
+focus_mode = 0
+item_count = 5
+item_0/text = "기본"
+item_1/text = "논리"
+item_2/text = "시간"
+item_3/text = "이동"
+item_4/text = "모터"
+script = ExtResource("1_wegol")
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_right = 199.0
+grow_vertical = 2
