@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4anjwrx5cvov"]
+[gd_scene load_steps=7 format=3 uid="uid://c4anjwrx5cvov"]
 
 [ext_resource type="FontFile" uid="uid://cpr2lids46txi" path="res://font/font.ttf" id="1_nbsdh"]
 [ext_resource type="Script" path="res://main.gd" id="1_u3hjj"]
+[ext_resource type="Script" path="res://blockcoding_button.gd" id="3_dgdbb"]
 [ext_resource type="Script" path="res://version.gd" id="4_y3b6i"]
 
 [sub_resource type="GDScript" id="GDScript_kudrg"]
@@ -117,7 +118,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_nbsdh")
 theme_override_font_sizes/font_size = 20
 text = "블럭코딩 하기"
-script = SubResource("GDScript_kudrg")
+script = ExtResource("3_dgdbb")
 
 [node name="connectDroneButton" type="Button" parent="CanvasLayer"]
 anchors_preset = 8

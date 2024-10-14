@@ -36,10 +36,12 @@ func _on_button_gui_input(event: InputEvent) -> void:
 		pressed = event.pressed
 	if event is InputEventScreenDrag:
 		if pressed:
-			var pos = to_global(event.position)
-			pos.x -= maxSize/2
-			pos.y -= maxSize/2
-			if pos.distance_to(joy_stick.global_position) <= maxSize:
+			var pos = joy_stick.to_global(event.position)
+			pos.x -= 113.4
+			pos.y -= 113.4
+			global_position = pos
+
+			if joy_stick.global_position.distance_to(pos) <= maxSize:
 				global_position = pos
 			else:
 				var angle = joy_stick.global_position.angle_to_point(pos)

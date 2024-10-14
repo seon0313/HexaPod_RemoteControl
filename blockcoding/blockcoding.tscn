@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://1tu61v4txy7y"]
+[gd_scene load_steps=7 format=3 uid="uid://1tu61v4txy7y"]
 
 [ext_resource type="Script" path="res://blockcoding/item_list.gd" id="1_wegol"]
 [ext_resource type="Script" path="res://blockcoding/area_2d.gd" id="2_v5gio"]
+[ext_resource type="Texture2D" uid="uid://hvlaqv7nomfe" path="res://icon.svg" id="3_gc8mc"]
 [ext_resource type="PackedScene" uid="uid://c3d6br21x6bum" path="res://ui/JoyStick/joy_stick.tscn" id="3_ols8i"]
+[ext_resource type="Script" path="res://blockcoding/close_window.gd" id="4_1nvni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tr4uo"]
 size = Vector2(128, 129.754)
@@ -14,9 +16,11 @@ size = Vector2(128, 129.754)
 [node name="ItemList" type="ItemList" parent="CanvasLayer"]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 66.0
+offset_top = 49.0
+offset_right = 146.0
 grow_vertical = 2
 focus_mode = 0
+theme_override_font_sizes/font_size = 30
 item_count = 5
 item_0/text = "기본"
 item_1/text = "논리"
@@ -30,14 +34,19 @@ layout_mode = 3
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+visibility_layer = 2
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 71.0
-offset_right = 198.0
+offset_left = 151.0
+offset_top = 49.0
+offset_right = 278.0
+offset_bottom = -1.0
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Area2D" type="Area2D" parent="CanvasLayer/Control/Panel"]
 top_level = true
@@ -52,6 +61,55 @@ position = Vector2(189, 72)
 scale = Vector2(0.5, 0.447)
 shape = SubResource("RectangleShape2D_tr4uo")
 
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control/Panel/Area2D"]
+position = Vector2(189.5, 72.5)
+scale = Vector2(0.492188, 0.429688)
+texture = ExtResource("3_gc8mc")
+
 [node name="JoyStick" parent="CanvasLayer/Control" instance=ExtResource("3_ols8i")]
 position = Vector2(644, 357)
 scale = Vector2(0.5, 0.5)
+
+[node name="Control2" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control2"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 43.0
+grow_horizontal = 2
+
+[node name="Close" type="Button" parent="CanvasLayer/Control2/Panel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "닫기"
+script = ExtResource("4_1nvni")
+
+[node name="Save" type="Button" parent="CanvasLayer/Control2/Panel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -185.0
+offset_top = 2.5
+offset_right = -101.0
+offset_bottom = -2.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "저장"

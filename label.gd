@@ -13,8 +13,9 @@ func _ready() -> void:
 		await get_tree().create_timer(1).timeout
 		if length >= dotLength:
 			length = 0
-			self._connected()
 			break
+		self._connected()
+		break
 func _connected():
 	get_tree().change_scene_to_file("res://ui/HexaControll/HexaControll.tscn")
 
